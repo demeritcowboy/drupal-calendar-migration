@@ -1,0 +1,21 @@
+uuid: 2c91b6ae-b8c9-4b00-9700-0f6d1c18f3c7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_assignees
+field_name: field_assignees
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

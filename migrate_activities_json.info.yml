@@ -1,0 +1,8 @@
+type: module
+name: Migrate Activities via JSON
+description: 'Migrate Activities via JSON using REST API'
+package: Migration
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - drupal:migrate
+  - migrate_plus:migrate_plus

@@ -1,0 +1,21 @@
+uuid: b3e8f6b7-82a9-43a6-82bd-3816f373c073
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_startdatetime
+    - node.type.calendarentry
+id: node.calendarentry.field_startdatetime
+field_name: field_startdatetime
+entity_type: node
+bundle: calendarentry
+label: Start Datetime
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: null
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

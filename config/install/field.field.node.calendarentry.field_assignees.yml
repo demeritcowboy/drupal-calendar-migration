@@ -1,0 +1,19 @@
+uuid: 5db67d52-2ab1-4737-a791-4cd86445bcd5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_assignees
+    - node.type.calendarentry
+id: node.calendarentry.field_assignees
+field_name: field_assignees
+entity_type: node
+bundle: calendarentry
+label: Assignees
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,8 @@
+uuid: 4822d8a8-c1b7-4127-ba74-4b8a278dd946
+langcode: en
+status: true
+dependencies: {  }
+name: calendaractivitytypes
+vid: calendaractivitytypes
+description: ''
+weight: 0

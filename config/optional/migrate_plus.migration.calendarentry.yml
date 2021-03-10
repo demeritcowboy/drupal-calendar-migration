@@ -1,0 +1,111 @@
+# Import calendar entries from a REST API JSON source. On the source site you need to set up the REST API and a view that has a REST page output matching source.fields below, and its url goes in `urls` below. The destination node type needs to match up to the process section below. You would run this from the destination site using `drush migrate-import --update calendarimportjson`.
+#
+# IMPORTANT: If you change this file after installing the module, clearing caches is not enough to pick up changes. You need to run:
+# drush config:import --partial --source=modules/path/to/this/module/config/optional/
+id: calendarimportjson
+label: Import JSON feed of Calendar Entries
+migration_group: CalendarEntry
+migration_tags:
+  - json import
+source:
+  # Fetch via url
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  # This prevents creating duplicates, but means you need to use --update to force it to update if nothing has changed (useful during dev).
+  track_changes: true
+  urls:
+    - 'http://example.com/act-restful-test?_format=json'
+  # An xpath-like selector corresponding to the items to be imported.
+  # The format that comes out of rest api is a numbered array. It looks like you
+  # could set it to 0 meaning depth 0, but doesn't seem to be the preferred way,
+  # so use '/' for the root.
+  item_selector: /
+  # Under 'fields', we list the data items to be imported. The keys
+  # are arbitrary `name`s which you reference as `source` later in the process
+  # section. For each field we're importing, we provide a label (optional - this
+  # is for display in migration tools) and an xpath selector for retrieving that
+  # value. It's important to note that this xpath is relative to the elements
+  # retrieved by item_selector above.
+  # In our case if the json looks like [{"subject":"foo","activity_date_time":"..."},{"subject":"bar","activity_date_time":"..."},...]
+  # then selectors would be `subject`, `activity_date_time`, etc...
+  fields:
+    -
+      name: title
+      label: 'Title'
+      selector: subject
+    -
+      name: startdt
+      label: 'Start Date'
+      selector: activity_date_time
+    -
+      name: enddt
+      label: 'End Date'
+      selector: activity_end_datetime
+    -
+      name: acttype
+      label: 'Activity Type'
+      selector: activity_type_id
+    -
+      name: assignees
+      label: 'Activity Assignees'
+      selector: sort_name_1
+    -
+      name: computeduniqueid
+      label: 'Computed unique id'
+      # ARGH - the field comes out of the view with the literal name "nothing"
+      selector: nothing
+  # Under 'ids', we identify source fields populated above which will uniquely
+  # identify each imported item. The 'type' makes sure the migration map table
+  # uses the proper schema type for stored the IDs.
+  ids:
+    computeduniqueid:
+      type: string
+process:
+  # Note that the 'source' entries below match up to the 'fields' 'name' above.
+  # The field here matches to the machine name in drupal.
+  type:
+    plugin: default_value
+    default_value: calendarentry
+  title: title
+  # If these are defined as DateTime in drupal, then it always seems to get
+  # the timezone wrong no matter what I do, even if I use from_timezone.
+  # So they need to be defined as Timestamp, and the source needs to include
+  # the zone offset.
+  field_startdatetime:
+    source: startdt
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:sP'
+    to_format: 'U'
+  field_enddatetime:
+    source: enddt
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:sP'
+    to_format: 'U'
+  field_calendaractivitytype:
+    source: acttype
+    #plugin: callback
+    #callable: var_dump
+    #plugin: static_map
+    #map:
+    #  'Meeting': 1
+    plugin: entity_lookup
+    value_key: name
+    bundle_key: vid
+    bundle: calendaractivitytypes
+    entity_type: taxonomy_term
+  # This is shorthand for telling it to use the plugin which just gets the value
+  field_assignees: assignees
+  sticky:
+    plugin: default_value
+    default_value: 0
+  uid:
+    plugin: default_value
+    default_value: 0
+destination:
+  plugin: 'entity:node'
+migration_dependencies: {  }
+dependencies:
+  enforced:
+    module:
+      - migrate_activities_json

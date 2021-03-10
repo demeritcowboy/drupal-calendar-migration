@@ -1,0 +1,29 @@
+uuid: 8378824a-27f6-42f4-ad54-fa2f4d35eac0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_calendaractivitytype
+    - node.type.calendarentry
+    - taxonomy.vocabulary.calendaractivitytypes
+id: node.calendarentry.field_calendaractivitytype
+field_name: field_calendaractivitytype
+entity_type: node
+bundle: calendarentry
+label: Calendar Activity Type
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      calendaractivitytypes: calendaractivitytypes
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

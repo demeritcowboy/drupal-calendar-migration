@@ -1,0 +1,18 @@
+uuid: c3aedb75-634e-4472-98e0-a542b789e90a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: calendarentry
+type: CalendarEntry
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false
