@@ -4,7 +4,7 @@
 # drush config:import --partial --source=modules/path/to/this/module/config/optional/
 id: calendarimportjson
 label: Import JSON feed of Calendar Entries
-migration_group: CalendarEntry
+migration_group: calendarimport
 migration_tags:
   - json import
 source:

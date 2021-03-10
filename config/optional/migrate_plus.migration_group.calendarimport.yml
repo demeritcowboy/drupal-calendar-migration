@@ -1,0 +1,12 @@
+langcode: en
+status: true
+id: calendarimport
+label: CalendarImport
+description: ''
+source_type: ''
+module: null
+shared_configuration: null
+dependencies:
+  enforced:
+    module:
+      - migrate_activities_json

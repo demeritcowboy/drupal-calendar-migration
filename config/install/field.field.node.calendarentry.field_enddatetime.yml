@@ -1,0 +1,21 @@
+uuid: b3e8f6b7-82a9-43a6-82bd-3816f373c074
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_enddatetime
+    - node.type.calendarentry
+id: node.calendarentry.field_enddatetime
+field_name: field_enddatetime
+entity_type: node
+bundle: calendarentry
+label: End Datetime
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: null
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

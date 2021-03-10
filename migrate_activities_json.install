@@ -1,0 +1,18 @@
+<?php
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_install().
+ */
+function migrate_activities_json_install(bool $is_synching) {
+  // List of activity type LABELs we care about.
+  $types = [
+    'Meeting',
+  ];
+  foreach ($types as $type) {
+    Term::create([
+      'name' => $type,
+      'vid' => 'calendaractivitytypes',
+    ])->save();
+  }
+}
