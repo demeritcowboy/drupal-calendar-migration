@@ -1,7 +1,9 @@
 # drupal-calendar-migration
 Migrate a json file into drupal as nodes intended as calendar-like entries.
 
-You install this on the destination site.
+## INSTALLATION
+
+You install this as a regular module on the destination site.
 
 ## TODOS
 
