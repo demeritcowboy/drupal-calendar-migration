@@ -8,6 +8,32 @@ function migrate_activities_json_install(bool $is_synching) {
   // List of activity type LABELs we care about.
   $types = [
     'Meeting',
+    'PED - Youth School Presentation Booking',
+    'PED - Youth Presentation Booking',
+    'PED - Post-secondary School Booking',
+    'PED - Adult or Professional Booking',
+    'PED - First Responder Training booking',
+    'PED - Institutional Support Program Booking',
+    'PED - SACE Booth',
+    'PED - Interview or Panel Discussion Booking',
+    'CLIN - IWBC',
+    'CLIN - Adult Counselling Client Consent',
+    'CLIN - Core Demographic',
+    'CLIN - Lunch',
+    'CLIN - Renewal Note',
+    'CLIN - Create Client',
+    'CLIN - Termination Note',
+    'CLIN - Intake Booking Adult',
+    'CLIN - Individual Adult First Session ONLINE',
+    'CLIN - Individual Adult First Session IN PERSON',
+    'CLIN - Individual Adult Follow up ONLINE',
+    'CLIN - Individual Adult Follow up IN PERSON',
+    'CLIN - Intake Booking C&Y',
+    'CLIN - Individual C&Y First Session ONLINE',
+    'CLIN - Individual C&Y First Session IN PERSON',
+    'CLIN - Individual C&Y Follow up ONLINE',
+    'CLIN - Individual C&Y Follow up IN PERSON',
+    'PACS - Individual Follow up ONLINE',
   ];
   foreach ($types as $type) {
     Term::create([
