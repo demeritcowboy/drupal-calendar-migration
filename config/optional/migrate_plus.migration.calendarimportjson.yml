@@ -89,7 +89,8 @@ process:
     #plugin: static_map
     #map:
     #  'Meeting': 1
-    plugin: entity_lookup
+    #plugin: entity_lookup
+    plugin: entity_generate
     value_key: name
     bundle_key: vid
     bundle: calendaractivitytypes
