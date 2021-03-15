@@ -51,6 +51,10 @@ source:
       label: 'Activity Assignees'
       selector: sort_name_1
     -
+      name: activityid
+      label: 'Activity ID'
+      selector: id
+    -
       name: computeduniqueid
       label: 'Computed unique id'
       # ARGH - the field comes out of the view with the literal name "nothing"
@@ -67,7 +71,12 @@ process:
   type:
     plugin: default_value
     default_value: calendarentry
-  title: title
+  title:
+    plugin: concat
+    source:
+      - activityid
+      - acttype
+    delimiter: ' - '
   # If these are defined as DateTime in drupal, then it always seems to get
   # the timezone wrong no matter what I do, even if I use from_timezone.
   # So they need to be defined as Timestamp, and the source needs to include
