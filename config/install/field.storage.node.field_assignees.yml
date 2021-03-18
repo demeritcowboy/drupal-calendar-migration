@@ -1,20 +1,19 @@
-uuid: 2c91b6ae-b8c9-4b00-9700-0f6d1c18f3c7
+uuid: 00165f44-ad14-48fe-8928-4c0a725b264e
 langcode: en
 status: true
 dependencies:
   module:
     - node
+    - taxonomy
 id: node.field_assignees
 field_name: field_assignees
 entity_type: node
-type: string
+type: entity_reference
 settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
+  target_type: taxonomy_term
 module: core
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

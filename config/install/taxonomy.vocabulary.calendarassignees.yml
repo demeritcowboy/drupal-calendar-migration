@@ -1,0 +1,8 @@
+uuid: 04ee08d8-2e3d-4f37-97e9-d377bc41321c
+langcode: en
+status: true
+dependencies: {  }
+name: calendarassignees
+vid: calendarassignees
+description: ''
+weight: 0

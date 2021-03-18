@@ -104,8 +104,13 @@ process:
     bundle_key: vid
     bundle: calendaractivitytypes
     entity_type: taxonomy_term
-  # This is shorthand for telling it to use the plugin which just gets the value
-  field_assignees: assignees
+  field_assignees:
+    source: assignees
+    plugin: entity_generate
+    value_key: name
+    bundle_key: vid
+    bundle: calendarassignees
+    entity_type: taxonomy_term
   sticky:
     plugin: default_value
     default_value: 0
